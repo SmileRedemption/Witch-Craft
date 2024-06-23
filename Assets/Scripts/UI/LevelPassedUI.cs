@@ -9,17 +9,19 @@ namespace UI
 {
     public class LevelPassedUI : MonoBehaviour
     {
-        [SerializeField] private LoadingCurtain _loadingCurtain;
         private ISceneLoader _sceneLoader;
         private IPlayerProgressSaver _playerProgressSaver;
         private LevelConfig _levelConfig;
+        private LoadingCurtain _loadingCurtain;
 
 
-        public void Initialize(ISceneLoader sceneLoader, IPlayerProgressSaver playerProgressSaver, LevelConfig levelConfig)
+        public void Initialize(ISceneLoader sceneLoader, IPlayerProgressSaver playerProgressSaver,
+            LevelConfig levelConfig, LoadingCurtain loadingCurtain)
         {
             _sceneLoader = sceneLoader;
             _playerProgressSaver = playerProgressSaver;
             _levelConfig = levelConfig;
+            _loadingCurtain = loadingCurtain;
         }
         
         private void OnEnable()
