@@ -1,4 +1,5 @@
 using System;
+using Audio;
 using Core;
 using Core.Data;
 using Core.Interfaces;
@@ -10,6 +11,7 @@ namespace CompositionRoot
     public class Root : MonoBehaviour, ICoroutineRunner
     {
         [SerializeField] private Menu _menu;
+        
         private ISceneLoader _sceneLoader;
         private IPlayerProgressSaver _playerProgressSaver;
 

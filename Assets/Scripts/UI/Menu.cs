@@ -1,4 +1,5 @@
 using System;
+using Audio;
 using Core;
 using Core.Data;
 using Core.Interfaces;
@@ -11,6 +12,8 @@ namespace UI
     {
         [SerializeField] private Button _playButton;
         [SerializeField] private LoadingCurtain _loadingCurtain;
+        [SerializeField] private Button _levelChooserButton;
+        [SerializeField] private LevelChooserUI _levelChooserUI;
         
         private ISceneLoader _sceneLoader;
         private IPlayerProgressSaver _playerProgressSaver;
@@ -24,11 +27,20 @@ namespace UI
         private void Start()
         {
             _playButton.onClick.AddListener(OnPLayButtonClick);
+            _levelChooserUI.Initialize(_sceneLoader, _loadingCurtain);
+            _levelChooserButton.onClick.AddListener(OnLevelChooseClicked);
+        }
+
+        private void OnLevelChooseClicked()
+        {
+            _playButton.gameObject.SetActive(false);
+            _levelChooserUI.Show();
         }
 
         private void OnDestroy()
         {
             _playButton.onClick.RemoveListener(OnPLayButtonClick);
+            _levelChooserButton.onClick.RemoveListener(OnLevelChooseClicked);
         }
 
         private void OnPLayButtonClick()
